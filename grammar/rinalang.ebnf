@@ -64,3 +64,6 @@ Primary     := Number | String | "true" | "false" | "null"
             | NewExpr
             ;
 NewExpr     := "new" TypeRef "(" (Expr ("," Expr)*)? ")" ;
+
+VarStmt  := ("var" | "let" | "ref") Ident ":" TypeRef ("=" Expr)? ";" ;
+FieldDecl:= ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;

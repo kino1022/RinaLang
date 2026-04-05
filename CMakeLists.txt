@@ -9,4 +9,5 @@ add_executable(RinaLang main.cpp
         compiler/ids.hpp
         compiler/ast.hpp
         compiler/types.hpp
-        compiler/symbols.hpp)
+        compiler/symbols.hpp
+        compiler/compiler.h)
