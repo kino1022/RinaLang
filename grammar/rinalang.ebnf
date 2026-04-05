@@ -1,0 +1,66 @@
+File        := ModuleDecl ImportDecl* TopDecl* EOF ;
+ModuleDecl  := "module" QualifiedName ";" ;
+ImportDecl  := "import" QualifiedName ";" ;
+
+TopDecl     := InterfaceDecl | ClassDecl | ComponentDecl | EntityDecl | FunctionDecl ;
+
+InterfaceDecl := "interface" Ident GenericParams? "{" InterfaceMember* "}" ;
+InterfaceMember := FunctionSig ";" ;
+
+ClassDecl    := "class" Ident GenericParams? WhereClause? "{" ClassMember* "}" ;
+ComponentDecl:= "component" Ident GenericParams? WhereClause? "{" ClassMember* "}" ;
+
+EntityDecl   := "entity" Ident GenericParams? ImplementsClause? WhereClause? "{" EntityMember* "}" ;
+
+ImplementsClause := "implements" TypeRef ("," TypeRef)* ;
+
+ClassMember  := FieldDecl | FunctionDecl ;
+EntityMember := FieldDecl | FunctionDecl ;
+
+FieldDecl    := ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;
+
+FunctionDecl := "fun" Ident GenericParams? ParamList ":" TypeRef WhereClause? Block ;
+FunctionSig  := "fun" Ident GenericParams? ParamList ":" TypeRef WhereClause? ;
+
+ParamList    := "(" (Param ("," Param)*)? ")" ;
+Param        := Ident ":" TypeRef ;
+
+GenericParams := "<" Ident ("," Ident)* ">" ;
+
+WhereClause  := "where" WhereItem ("," WhereItem)* ;
+WhereItem    := Ident ":" TypeRef ( "&" TypeRef )* ;
+
+TypeRef     := QualifiedName TypeArgs? ;
+TypeArgs    := "<" TypeRef ("," TypeRef)* ">" ;
+QualifiedName := Ident ("." Ident)* ;
+
+Block       := "{" Stmt* "}" ;
+
+Stmt        := VarStmt | ReturnStmt | IfStmt | WhileStmt | ExprStmt ;
+VarStmt     := ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;
+ReturnStmt  := "return" Expr? ";" ;
+IfStmt      := "if" "(" Expr ")" Block ("else" Block)? ;
+WhileStmt   := "while" "(" Expr ")" Block ;
+ExprStmt    := Expr ";" ;
+
+Expr        := Assign ;
+Assign      := Or ( "=" Assign )? ;
+
+Or          := And ( "||" And )* ;
+And         := Equality ( "&&" Equality )* ;
+Equality    := Rel ( ("==" | "!=") Rel )* ;
+Rel         := Add ( ("<" | "<=" | ">" | ">=") Add )* ;
+Add         := Mul ( ("+" | "-") Mul )* ;
+Mul         := Unary ( ("*" | "/") Unary )* ;
+Unary       := ("!" | "-" ) Unary | Postfix ;
+Postfix     := Primary ( Call | Member )* ;
+Call        := "(" (Expr ("," Expr)*)? ")" ;
+Member      := "." Ident ;
+
+Primary     := Number | String | "true" | "false" | "null"
+            | "this"
+            | Ident
+            | "(" Expr ")"
+            | NewExpr
+            ;
+NewExpr     := "new" TypeRef "(" (Expr ("," Expr)*)? ")" ;
