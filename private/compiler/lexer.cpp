@@ -193,7 +193,7 @@ crl::token crl::lexer::lex_ident_or_keyword() {
         {"string", token_kind::KwString},
     };
     auto it = kw.find(text);
-    if (it == kw.end()) {
+    if (it != kw.end()) {
         return make (it->second, text, start);
     }
     return make (token_kind::Identifier, text, start);

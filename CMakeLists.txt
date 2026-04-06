@@ -11,4 +11,5 @@ add_executable(
         private/compiler/lexer.cpp
         public/compiler/file_read.hpp
         public/compiler/file_read.hpp
+        token_test.rina
 )

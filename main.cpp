@@ -1,16 +1,34 @@
 #include <iostream>
 
+#include "public/compiler/file_read.hpp"
+#include "public/compiler/lexer.hpp"
+
 // TIP コードを<b>Run</b>するには、<shortcut actionId="Run"/> を押すか、ガターにある <icon src="AllIcons.Actions.Execute"/> アイコンをクリックします。
-int main() {
-    // TIP キャレットが <b>lang</b> 変数名にある状態で <shortcut actionId="RenameElement"/> を押すと、CLion によって変数名が変更されます。
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
-
-    for (int i = 1; i <= 5; i++) {
-        // TIP <shortcut actionId="Debug"/> を押すと、コードのデバッグが開始されます。1 つの <icon src="AllIcons.Debugger.Db_set_breakpoint"/> ブレークポイントが設定されていますが、<shortcut actionId="ToggleLineBreakpoint"/> を押していつでも追加できます。
-        std::cout << "i = " << i << std::endl;
+int main(int argc, char** argv) {
+    if (argc < 2) {
+        std::cerr << "usage : rinalang <file>\n";
+        return 1;
     }
-
-    return 0;
-    // TIP <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a> で CLion ヘルプをご覧ください。メインメニューから 'ヘルプ | IDE 機能の学習' を選択して CLion の対話型レッスンを試すこともできます。
+    const std::string path = argv[1];
+    try {
+        std::string src = read_entire_file(path);
+        crl::lexer lx(src, path);
+        auto toks = lx.lex_all();
+        for (const auto& t : toks) {
+            std::cout << t.pos.source_path << ":" << t.pos.line << ":" << t.pos.column
+                        << " " << crl::token_kind_name(t.kind)
+                        << "[" << t.lexeme << "]";
+        }
+        return 0;
+    }
+    catch (const crl::lex_error& e) {
+        std::cerr 
+            << e.pos.source_path << ":" << e.pos.line << ":" << e.pos.column
+            << ": " << e.what() << std::endl;
+        return 2;
+    }
+    catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 3;
+    }
 }

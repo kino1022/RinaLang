@@ -1,0 +1,8 @@
+struct test_struct {
+    let a: int;
+    var b: int;
+    
+    fn test_func () -> int {
+        return 1;
+    }
+}
