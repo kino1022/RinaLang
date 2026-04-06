@@ -15,20 +15,32 @@ namespace crl {
         source_pos pos;
     };
     
+    struct expr;
+    using expr_ptr = std::unique_ptr<expr>;
+
+    struct expr_int { token tok; };        // IntLiteral
+    struct expr_var { token tok; };        // Identifier
+    struct expr_field { expr_ptr base; token field; }; // base.field
+    struct expr_call;
+    
     struct arg {
         enum class kind_t {
             Value, 
             Ref
         }kind;
         source_pos pos;
-        std::optional<token> value_token;
+        expr_ptr value;
         std::optional<place> ref_place;
     };
     
-    struct call_expr {
-        std::string callee;
+    struct expr_call {
+        token callee;
         std::vector<arg> args;
+    };
+    
+    struct expr {
         source_pos pos;
+        std::variant<expr_int,expr_var, expr_field, expr_call> node;
     };
     
     class parser {
@@ -37,7 +49,7 @@ namespace crl {
         
         place parse_place();
         
-        call_expr parse_call();
+        expr_ptr parse_call_expr();
     private:
         const std::vector<token>& toks_;
         size_t i_ = 0;
@@ -45,11 +57,14 @@ namespace crl {
         const token& peek(size_t lookahead = 0) const;
         bool match (token_kind k);
         const token&  expect(token_kind k, const char* what);
-        bool is_at_end() const;
+        
+        expr_ptr parse_expr();
+        expr_ptr parse_postfix();
+        expr_ptr parse_primary();
         
         arg parse_arg();
+        std::vector<arg> parse_args_list_until_rparen();
         
-        token parse_simple_expr_token();
-        
+        bool is_at_end() const;
     };
 }
