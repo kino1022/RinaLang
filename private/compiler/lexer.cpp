@@ -129,7 +129,7 @@ crl::token crl::lexer::lex_int() {
         advance();
     }
     std::string lex(input_.substr(begin, i_ - begin));
-    return make (token_kind::IntLiteral, move(lex), start);
+    return make (token_kind::IntLiteral, std::move(lex), start);
 }
 
 crl::token crl::lexer::lex_float() {
@@ -139,7 +139,7 @@ crl::token crl::lexer::lex_float() {
         advance();
     }
     std::string lex(input_.substr(begin, i_ - begin));
-    return make (token_kind::FloatLiteral, move(lex), start);
+    return make (token_kind::FloatLiteral, std::move(lex), start);
 }
 
 crl::token crl::lexer::lex_string() {
@@ -158,7 +158,7 @@ crl::token crl::lexer::lex_string() {
         value.push_back(c);
         advance();
     }
-    return make (token_kind::StringLiteral, move(value), start);
+    return make (token_kind::StringLiteral, std::move(value), start);
 }
 
 crl::token crl::lexer::lex_ident_or_keyword() {

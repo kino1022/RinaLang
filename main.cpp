@@ -3,6 +3,7 @@
 #include "public/compiler/file_read.hpp"
 #include "public/compiler/lexer.hpp"
 #include "public/compiler/parser.hpp"
+#include "public/compiler/ast_printer_snippet.hpp"
 
 // TIP コードを<b>Run</b>するには、<shortcut actionId="Run"/> を押すか、ガターにある <icon src="AllIcons.Actions.Execute"/> アイコンをクリックします。
 int main(int argc, char** argv) {
@@ -34,21 +35,13 @@ int main(int argc, char** argv) {
             return 0;
         }
         if (mode == "--parse-call") {
+            
+        }
+        if (mode == "--parse-expr") {
             crl::parser ps(toks);
-            crl::call_expr c = ps.parse_call();
-            std::cout << "call.callee = " << c.callee << std::endl;
-            for (size_t i = 0; i < c.args.size(); i++) {
-                const auto& a = c.args[i];
-                if (a.kind == crl::arg::kind_t::Ref) {
-                    std::cout << "arg[" << i << "] = ref "
-                            << a.ref_place->root;
-                    for (auto& f : a.ref_place->fields) std::cout << "." << f;
-                    std::cout << "\n";
-                } else {
-                    std::cout << "arg[" << i << "] = value "
-                            << a.value_token->lexeme << "\n";
-                }
-            }
+            crl::expr_ptr e = ps.parse_call_expr(); // 既存名のまま使うならこれ
+            std::cout << print_expr(*e) << "\n";
+            return 0;
         }
     }
     catch (const crl::lex_error& e) {
