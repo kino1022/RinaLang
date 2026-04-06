@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.20)
 project(RinaLang)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -10,6 +10,6 @@ add_executable(
         public/compiler/lexer.hpp
         private/compiler/lexer.cpp
         public/compiler/file_read.hpp
-        public/compiler/file_read.hpp
-        token_test.rina
+        public/compiler/parser.hpp
+        private/compiler/parser.cpp
 )
