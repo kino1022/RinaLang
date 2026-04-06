@@ -51,6 +51,12 @@ namespace rinalang::entity {
             return ref;
         }
         
+        template<class T, class... Args>
+        bool has () const {
+            const std::type_index key(typeid(T));
+            return components.contains(key);
+        }
+        
     private:
         std::unordered_map<std::type_index, std::unique_ptr<i_component_holder>> components;
     };
