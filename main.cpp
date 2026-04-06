@@ -41,12 +41,12 @@ int main(int argc, char** argv) {
                 const auto& a = c.args[i];
                 if (a.kind == crl::arg::kind_t::Ref) {
                     std::cout << "arg[" << i << "] = ref "
-                              << a.ref_place->root;
+                            << a.ref_place->root;
                     for (auto& f : a.ref_place->fields) std::cout << "." << f;
                     std::cout << "\n";
                 } else {
                     std::cout << "arg[" << i << "] = value "
-                              << a.value_token->lexeme << "\n";
+                            << a.value_token->lexeme << "\n";
                 }
             }
         }
