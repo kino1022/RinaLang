@@ -31,17 +31,17 @@ crl::token crl::lexer::next() {
     if (c == '"'){
         return lex_string();
     }
-    if (c == '-' && peek() == '>'){
+    if (c == '-' && peek(1) == '>'){
         advance();
         advance();
         return make (token_kind::Arrow, "->", start);
     }
-    if (c == '=' && peek() == '=') {
+    if (c == '=' && peek(1) == '=') {
         advance();
         advance();
         return make(token_kind::EqualEqual, "==", start);
     }
-    if (c == '!' && peek() == '=') {
+    if (c == '!' && peek(1) == '=') {
         advance();
         advance();
         return make(token_kind::NotEqual, "!=", start);
@@ -84,6 +84,7 @@ void crl::lexer::advance() {
     else {
         pos_.column++;
     }
+    i_++;
 }
 
 crl::token crl::lexer::make(token_kind kind, std::string_view lexeme, source_pos pos) {
@@ -107,7 +108,7 @@ bool crl::lexer::is_ident_count(char c) {
 void crl::lexer::skip_comment_and_space() {
     while (true) {
         char c = peek();
-        if (c == '' || c == '\t' || c == '\n' || c == '\r') {
+        if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
             advance();
             continue;
         }

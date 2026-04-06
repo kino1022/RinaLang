@@ -9,5 +9,6 @@ add_executable(
         public/runtime/entity.hpp
         public/compiler/lexer.hpp
         private/compiler/lexer.cpp
-        private/runtime/exceptions.cpp
+        public/compiler/file_read.hpp
+        public/compiler/file_read.hpp
 )
