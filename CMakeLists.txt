@@ -7,4 +7,6 @@ add_executable(
         RinaLang main.cpp
         public/runtime/exceptions.hpp
         public/runtime/entity.hpp
+        public/runtime/world.hpp
+        public/compiler/lexer.hpp
 )

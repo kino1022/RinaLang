@@ -1,69 +1,57 @@
-File        := ModuleDecl ImportDecl* TopDecl* EOF ;
-ModuleDecl  := "module" QualifiedName ";" ;
-ImportDecl  := "import" QualifiedName ";" ;
+program       := { toplevel } ;
 
-TopDecl     := InterfaceDecl | ClassDecl | ComponentDecl | EntityDecl | FunctionDecl ;
+toplevel      := struct_decl | fn_decl ;
 
-InterfaceDecl := "interface" Ident GenericParams? "{" InterfaceMember* "}" ;
-InterfaceMember := FunctionSig ";" ;
+struct_decl   := "struct" Ident "{" { field_decl } "}" ;
+field_decl    := Ident ":" type ";" ;
 
-ClassDecl    := "class" Ident GenericParams? WhereClause? "{" ClassMember* "}" ;
-ComponentDecl:= "component" Ident GenericParams? WhereClause? "{" ClassMember* "}" ;
+fn_decl       := "fn" Ident "(" [ params ] ")" "->" type block ;
+params        := param { "," param } ;
+param         := Ident ":" type ;
 
-EntityDecl   := "entity" Ident GenericParams? ImplementsClause? WhereClause? "{" EntityMember* "}" ;
+block         := "{" { stmt } "}" ;
 
-ImplementsClause := "implements" TypeRef ("," TypeRef)* ;
+stmt          := let_stmt
+               | assign_stmt
+               | expr_stmt
+               | return_stmt ;
 
-ClassMember  := FieldDecl | FunctionDecl ;
-EntityMember := FieldDecl | FunctionDecl ;
+let_stmt      := "let" [ "mut" ] Ident "=" expr ";" ;
 
-FieldDecl    := ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;
+assign_stmt   := lvalue "=" expr ";" ;
 
-FunctionDecl := "fun" Ident GenericParams? ParamList ":" TypeRef WhereClause? Block ;
-FunctionSig  := "fun" Ident GenericParams? ParamList ":" TypeRef WhereClause? ;
+lvalue        := Ident
+               | expr "." Ident ;   // MVP: field assignment target
 
-ParamList    := "(" (Param ("," Param)*)? ")" ;
-Param        := Ident ":" TypeRef ;
+return_stmt   := "return" [ expr ] ";" ;
+expr_stmt     := expr ";" ;
 
-GenericParams := "<" Ident ("," Ident)* ">" ;
+expr          := equality ;
+equality      := add { ("==" | "!=") add } ;
+add           := unary { ("+" | "-") unary } ;
+unary         := ("&" | "&mut" | "-") unary | postfix ;
+postfix       := primary { "." Ident } ;
 
-WhereClause  := "where" WhereItem ("," WhereItem)* ;
-WhereItem    := Ident ":" TypeRef ( "&" TypeRef )* ;
+primary       := IntLit
+               | StringLit
+               | "true" | "false"
+               | Ident
+               | struct_lit
+               | call
+               | "(" expr ")" ;
 
-TypeRef     := QualifiedName TypeArgs? ;
-TypeArgs    := "<" TypeRef ("," TypeRef)* ">" ;
-QualifiedName := Ident ("." Ident)* ;
+call          := Ident "(" [ args ] ")" ;
+args          := expr { "," expr } ;
 
-Block       := "{" Stmt* "}" ;
+struct_lit    := Ident "{" [ field_inits ] "}" ;
+field_inits   := field_init { "," field_init } ;
+field_init    := Ident ":" expr ;
 
-Stmt        := VarStmt | ReturnStmt | IfStmt | WhileStmt | ExprStmt ;
-VarStmt     := ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;
-ReturnStmt  := "return" Expr? ";" ;
-IfStmt      := "if" "(" Expr ")" Block ("else" Block)? ;
-WhileStmt   := "while" "(" Expr ")" Block ;
-ExprStmt    := Expr ";" ;
+type          := "Int" | "Bool" | "String" | "Void"
+               | Ident                      // struct type name
+               | "&" type
+               | "mut" "&" type ;           // mut &T
 
-Expr        := Assign ;
-Assign      := Or ( "=" Assign )? ;
+unary         := ("ref" | "refmut" | "-") unary | postfix ;
 
-Or          := And ( "||" And )* ;
-And         := Equality ( "&&" Equality )* ;
-Equality    := Rel ( ("==" | "!=") Rel )* ;
-Rel         := Add ( ("<" | "<=" | ">" | ">=") Add )* ;
-Add         := Mul ( ("+" | "-") Mul )* ;
-Mul         := Unary ( ("*" | "/") Unary )* ;
-Unary       := ("!" | "-" ) Unary | Postfix ;
-Postfix     := Primary ( Call | Member )* ;
-Call        := "(" (Expr ("," Expr)*)? ")" ;
-Member      := "." Ident ;
-
-Primary     := Number | String | "true" | "false" | "null"
-            | "this"
-            | Ident
-            | "(" Expr ")"
-            | NewExpr
-            ;
-NewExpr     := "new" TypeRef "(" (Expr ("," Expr)*)? ")" ;
-
-VarStmt  := ("var" | "let" | "ref") Ident ":" TypeRef ("=" Expr)? ";" ;
-FieldDecl:= ("var" | "let") Ident ":" TypeRef ("=" Expr)? ";" ;
+type          := ... | "ref" type | "refmut" type ;
