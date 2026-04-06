@@ -12,3 +12,13 @@
 ## 自由な値型と参照型
 - C#ではclassは参照型と決まってしまっているが、rinalangではc++のように記法によって自在に扱えるようにする
 - すべてのインスタンスは値型としてインスタンスされます
+- 参照型として他のインスタンスで扱う場合はrefキーワードを付記して宣言する必要があります
+```c++
+ref var ref_instance : int32;
+
+fn main () : void {
+    var value_instance : int32 = 1;
+    ref_instance = value_instance; //値の代入
+    ref_instance = 2; //参照の付け替え
+}
+```
