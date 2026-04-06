@@ -3,11 +3,8 @@ project(RinaLang)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(RinaLang main.cpp
-        runtime/exceptions.h
-        runtime/entity.h
-        compiler/ids.hpp
-        compiler/ast.hpp
-        compiler/types.hpp
-        compiler/symbols.hpp
-        compiler/compiler.h)
+add_executable(
+        RinaLang main.cpp
+        public/runtime/exceptions.hpp
+        public/runtime/entity.hpp
+)
