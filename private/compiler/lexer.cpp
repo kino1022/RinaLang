@@ -46,6 +46,18 @@ crl::token crl::lexer::next() {
         advance();
         return make(token_kind::NotEqual, "!=", start);
     }
+    if (c == '>' && peek(1) == '=') {
+        advance();
+        advance();
+        return make(token_kind::GreaterEqual, ">=", start);
+
+    }
+    if (c == '<' && peek(1) == '=') {
+        advance();
+        advance();
+        return make(token_kind::LessEqual, "<=", start);
+    }
+    
     
     switch (c) {
         case '{' : advance (); return make (token_kind::LBrace, "{", start);
@@ -56,9 +68,11 @@ crl::token crl::lexer::next() {
         case '.' : advance (); return make (token_kind::Dot, ".", start);
         case ':' : advance (); return make (token_kind::Colon, ":", start);
         case ';' : advance (); return make (token_kind::SemiColon, ";", start);
-        case '+' : advance(); return make (token_kind::Plus, "+", start);
+        case '+' : advance (); return make (token_kind::Plus, "+", start);
         case '-' : advance (); return make (token_kind::Minus, "-", start);
         case '=' : advance (); return make (token_kind::Assign, "=", start);
+        case '>' : advance (); return make (token_kind::Greater, ">", start);
+        case '<' : advance (); return make (token_kind::Less, "<", start);
     default:
         throw lex_error(start, std::string("Unexpected character: '") + c + "'");
     }

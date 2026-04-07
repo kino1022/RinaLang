@@ -51,6 +51,10 @@ namespace crl {
         Minus,
         EqualEqual, // ==
         NotEqual, // !=
+        Less,
+        LessEqual,
+        Greater,
+        GreaterEqual,
     };
     
     static const char* token_kind_name(crl::token_kind k) {
@@ -100,6 +104,10 @@ namespace crl {
             case token_kind::Minus: return "Minus";
             case token_kind::EqualEqual: return "EqualEqual";
             case token_kind::NotEqual: return "NotEqual";
+            case token_kind::LessEqual: return "LessEqual";
+            case token_kind::GreaterEqual: return "GreaterEqual";
+            case token_kind::Greater: return "Greater";
+            case token_kind::Less: return "Less";
             default: return "Unknown";
         }
     }

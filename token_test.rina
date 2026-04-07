@@ -1,1 +1,5 @@
-a.b(1)(2).c
+fn main() {
+  let mut x = 1 + 2;
+  foo(ref a.b, x);
+  return;
+}

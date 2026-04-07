@@ -22,6 +22,8 @@ namespace crl {
     struct expr_var { token tok; };        // Identifier
     struct expr_field { expr_ptr base; token field; }; // base.field
     struct expr_call;
+    struct expr_string {token tok;};
+    struct expr_bool {bool value; token tok;};
     
     struct arg {
         enum class kind_t {
@@ -38,9 +40,82 @@ namespace crl {
         std::vector<arg> args;
     };
     
+    struct expr_binary {
+        token op;
+        expr_ptr lhs;
+        expr_ptr rhs;
+    };
+    
+    struct expr_unary {
+        token op;
+        expr_ptr rhs;
+    };
+    
     struct expr {
         source_pos pos;
-        std::variant<expr_int,expr_var, expr_field, expr_call> node;
+        std::variant<
+            expr_int,expr_var, 
+            expr_field,
+            expr_call,
+            expr_string,
+            expr_bool,
+            expr_binary,
+            expr_unary
+        > node;
+    };
+    
+    struct stmt;
+    using stmt_ptr = std::unique_ptr<stmt>;
+    
+    struct stmt_let {
+        bool is_mut;
+        token name;
+        expr_ptr init;
+    };
+    
+    struct stmt_assign {
+        place lhs;
+        expr_ptr rhs;
+    };
+    
+    struct stmt_return {
+        std::optional<expr_ptr> value;
+    };
+    
+    struct stmt_expr {
+        expr_ptr value;
+    };
+    
+    struct stmt {
+        source_pos pos;
+        std::variant<
+            stmt_let,
+            stmt_assign,
+            stmt_return,
+            stmt_expr
+            > node;
+    };
+    
+    struct block {
+        source_pos pos;
+        std::vector<stmt_ptr> stmts;
+    };
+    
+    struct type_name {
+        token name;
+    };
+    
+    struct param {
+        token name;
+        std::optional<type_name> ty;
+    };
+    
+    struct fn_item {
+        token name;
+        std::vector<param> params;
+        std::optional<type_name> ret_type;
+        block body;
+        source_pos pos;
     };
     
     class parser {
@@ -50,6 +125,12 @@ namespace crl {
         place parse_place();
         
         expr_ptr parse_call_expr();
+        
+        stmt_ptr parse_stmt_eof();
+        block parse_block_eof();
+        
+        fn_item parse_fn_eof();
+        
     private:
         const std::vector<token>& toks_;
         size_t i_ = 0;
@@ -61,6 +142,21 @@ namespace crl {
         expr_ptr parse_expr();
         expr_ptr parse_postfix();
         expr_ptr parse_primary();
+        
+        expr_ptr parse_equality();
+        expr_ptr parse_add();
+        expr_ptr parse_unary();
+        
+        expr_ptr parse_comparison();
+        
+        // parser private:
+        stmt_ptr parse_stmt();
+        block parse_block();
+        
+        fn_item parse_fn();
+        std::vector<param> parse_param_list_until_rparen();
+        std::optional<type_name> try_parse_ret_type();
+        type_name parse_type_name();
         
         arg parse_arg();
         std::vector<arg> parse_args_list_until_rparen();

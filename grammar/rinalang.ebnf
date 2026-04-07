@@ -55,3 +55,8 @@ type          := "Int" | "Bool" | "String" | "Void"
 unary         := ("ref" | "refmut" | "-") unary | postfix ;
 
 type          := ... | "ref" type | "refmut" type ;
+
+fn_item  := 'fn' Identifier '(' [params] ')' [ '->' type ] block
+params   := param (',' param)*
+param    := Identifier ':' type   // ここは「次のステップ」で型注釈を入れるので、最初は空でもOK
+type     := Identifier             // 次のステップで拡張
