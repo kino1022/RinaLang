@@ -71,11 +71,21 @@ namespace crl {
         token name;
     };
     
+    struct type;
+    using type_ptr = std::unique_ptr<type>;
+    
+    struct type_named { token name; };
+    struct type_ref { type_ptr base; };
+    
+    struct type {
+        source_pos pos;
+        std::variant<type_named, type_ref> node;
+    };
     
     struct stmt_let {
         bool is_mut;
         token name;
-        std::optional<type_name> ty;
+        std::optional<type_ptr> ty;
         expr_ptr init;
     };
     
@@ -109,16 +119,17 @@ namespace crl {
     
     struct param {
         token name;
-        std::optional<type_name> ty;
+        std::optional<type_ptr> ty;
     };
     
     struct fn_item {
         token name;
         std::vector<param> params;
-        std::optional<type_name> ret_type;
+        std::optional<type_ptr> ret_type;
         block body;
         source_pos pos;
     };
+    
     
     class parser {
     public:
@@ -150,6 +161,9 @@ namespace crl {
         expr_ptr parse_unary();
         
         expr_ptr parse_comparison();
+        
+        type_ptr parse_type();
+        type_ptr parse_type_named();
         
         // parser private:
         stmt_ptr parse_stmt();

@@ -301,9 +301,9 @@ namespace crl {
 
             token name = expect(token_kind::Identifier, "identifier (let name)");
             
-            std::optional<type_name> ty;
+            std::optional<type_ptr> ty;
             if (match(token_kind::Colon)) {
-                ty = parse_type_name();
+                ty = parse_type();
             }
             
             expect(token_kind::Assign, "'='");
@@ -354,8 +354,22 @@ namespace crl {
     }
 
     type_name parser::parse_type_name() {
-        token t = expect(token_kind::Identifier, "type name (identifier)");
-        return type_name{t};
+        const token& t = peek();
+        if (t.kind == token_kind::Identifier) {
+            token tok = t;
+            i_++;
+            return type_name{ tok };
+        }
+        if (t.kind == token_kind::KwInt ||
+            t.kind == token_kind::KwBool ||
+            t.kind == token_kind::KwFloat || 
+            t.kind == token_kind::KwString ||
+            t.kind == token_kind::KwVoid) {
+            token tok = t;
+            i_++;
+            return type_name{ tok };
+        }
+        throw parse_error(t.pos, std::string("expected type name, but got [") + t.lexeme + "]");
     }
 
     std::vector<param> parser::parse_param_list_until_rparen() {
@@ -370,7 +384,7 @@ namespace crl {
             p.name = name;
             
             if (match (token_kind::Colon)) {
-                p.ty = parse_type_name();
+                p.ty = parse_type();
             }
             
             ps.push_back(std::move(p));
@@ -384,11 +398,11 @@ namespace crl {
         return ps;
     }
 
-    std::optional<type_name> parser::try_parse_ret_type() {
+    std::optional<type_ptr> parser::try_parse_ret_type() {
         if (!match(token_kind::Colon)) {
             return std::nullopt;
         }
-        return parse_type_name();
+        return parse_type();
     }
 
     fn_item parser::parse_fn() {
@@ -398,7 +412,7 @@ namespace crl {
         expect(token_kind::LParen, "'('");
         std::vector<param> params = parse_param_list_until_rparen();
         
-        std::optional<type_name> ret = try_parse_ret_type();
+        std::optional<type_ptr> ret = parse_type();
         
         block body = parse_block();
         
@@ -415,5 +429,42 @@ namespace crl {
         fn_item f = parse_fn();
         expect(token_kind::Eof, "end of file");
         return f;
+    }
+
+    type_ptr parser::parse_type() {
+        const token& t = peek();
+        
+        if (t.kind == token_kind::KwRef) {
+            token refTok = t;
+            i_++;
+            type_ptr base = parse_type();
+            
+            auto ty = std::make_unique<type>();
+            ty->pos = refTok.pos;
+            ty->node = type_ref {std::move(base)};
+            return ty;
+        }
+        
+        return parse_type_named();
+    }
+
+    type_ptr parser::parse_type_named() {
+        const token& t = peek();
+        
+        if (t.kind == token_kind::Identifier ||
+            t.kind == token_kind::KwInt ||
+            t.kind == token_kind::KwBool ||
+            t.kind == token_kind::KwFloat ||
+            t.kind == token_kind::KwString ||
+            t.kind == token_kind::KwVoid) {
+            token nameTok = t;
+            i_++;
+            auto ty = std::make_unique<type>();
+            ty->pos = nameTok.pos;
+            ty->node = type_named {std::move(nameTok)};
+            return ty;
+        }
+        
+        throw parse_error(t.pos, std::string("expected type, but got [") + t.lexeme + "]");
     }
 }

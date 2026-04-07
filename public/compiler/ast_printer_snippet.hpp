@@ -27,6 +27,19 @@ inline std::string print_arg(const arg& a, int indent) {
     oss << indent_str(indent) << ")";
     return oss.str();
 }
+    inline std::string print_type(const crl::type& t) {
+        std::ostringstream oss;
+        std::visit([&](auto&& node) {
+            using T = std::decay_t<decltype(node)>;
+            if constexpr (std::is_same_v<T, crl::type_named>) {
+                oss << node.name.lexeme;
+            } else if constexpr (std::is_same_v<T, crl::type_ref>) {
+                oss << "ref " << print_type(*node.base);
+            }
+        }, t.node);
+        return oss.str();
+    }
+    
 
 inline std::string print_expr(const expr& e, int indent) {
     std::ostringstream oss;
@@ -92,7 +105,7 @@ inline std::string print_expr(const expr& e, int indent) {
             if constexpr (std::is_same_v<T, crl::stmt_let>) {
                 oss << indent_str(indent) << "Let(mut=" << (node.is_mut ? "true" : "false")
                     << ", name=" << node.name.lexeme;
-                if (node.ty.has_value()) oss << ", ty=" << node.ty->name.lexeme;
+                if (node.ty.has_value()) oss << ", ty=" << print_type(*(*node.ty));
                 oss << ",\n";
             } else if constexpr (std::is_same_v<T, crl::stmt_assign>) {
                 oss << indent_str(indent) << "Assign(lhs=" << node.lhs.root;
@@ -131,7 +144,7 @@ inline std::string print_expr(const expr& e, int indent) {
     inline std::string print_type_name(const crl::type_name& t) {
         return t.name.lexeme;
     }
-
+    
     inline std::string print_fn(const crl::fn_item& f, int indent = 0) {
         std::ostringstream oss;
         oss << indent_str(indent) << "Fn(name=" << f.name.lexeme << ", params=[";
@@ -139,12 +152,12 @@ inline std::string print_expr(const expr& e, int indent) {
         for (size_t i = 0; i < f.params.size(); i++) {
             const auto& p = f.params[i];
             oss << p.name.lexeme;
-            if (p.ty.has_value()) oss << ":" << print_type_name(*p.ty);
+            if (p.ty.has_value()) oss << ":" << print_type(*(*p.ty));
             if (i + 1 != f.params.size()) oss << ", ";
         }
 
         oss << "]";
-        if (f.ret_type.has_value()) oss << ", ret=" << print_type_name(*f.ret_type);
+        if (f.ret_type.has_value()) oss << ", ret=" << print_type(*(*f.ret_type));
         oss << ",\n";
         oss << print_block(f.body, indent + 1) << "\n";
         oss << indent_str(indent) << ")";

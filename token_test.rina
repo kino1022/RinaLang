@@ -1,1 +1,3 @@
-let x: int = 1 + 2;
+fn f (x: ref int) : ref int {
+  return x;
+}
