@@ -67,9 +67,15 @@ namespace crl {
     struct stmt;
     using stmt_ptr = std::unique_ptr<stmt>;
     
+    struct type_name {
+        token name;
+    };
+    
+    
     struct stmt_let {
         bool is_mut;
         token name;
+        std::optional<type_name> ty;
         expr_ptr init;
     };
     
@@ -99,10 +105,6 @@ namespace crl {
     struct block {
         source_pos pos;
         std::vector<stmt_ptr> stmts;
-    };
-    
-    struct type_name {
-        token name;
     };
     
     struct param {

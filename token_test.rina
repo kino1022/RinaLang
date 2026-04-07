@@ -1,5 +1,1 @@
-fn main() {
-  let mut x = 1 + 2;
-  foo(ref a.b, x);
-  return;
-}
+let x: int = 1 + 2;

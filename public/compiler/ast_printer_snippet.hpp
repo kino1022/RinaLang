@@ -91,9 +91,9 @@ inline std::string print_expr(const expr& e, int indent) {
 
             if constexpr (std::is_same_v<T, crl::stmt_let>) {
                 oss << indent_str(indent) << "Let(mut=" << (node.is_mut ? "true" : "false")
-                    << ", name=" << node.name.lexeme << ",\n";
-                oss << print_expr(*node.init, indent + 1) << "\n";
-                oss << indent_str(indent) << ")";
+                    << ", name=" << node.name.lexeme;
+                if (node.ty.has_value()) oss << ", ty=" << node.ty->name.lexeme;
+                oss << ",\n";
             } else if constexpr (std::is_same_v<T, crl::stmt_assign>) {
                 oss << indent_str(indent) << "Assign(lhs=" << node.lhs.root;
                 for (auto& f : node.lhs.fields) oss << "." << f;

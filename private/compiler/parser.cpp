@@ -300,13 +300,19 @@ namespace crl {
             if (match(token_kind::KwMut)) is_mut = true;
 
             token name = expect(token_kind::Identifier, "identifier (let name)");
+            
+            std::optional<type_name> ty;
+            if (match(token_kind::Colon)) {
+                ty = parse_type_name();
+            }
+            
             expect(token_kind::Assign, "'='");
             expr_ptr init = parse_expr();
             expect(token_kind::SemiColon, "';'");
 
             auto s = std::make_unique<stmt>();
             s->pos = letTok.pos;
-            s->node = stmt_let{ is_mut, name, std::move(init) };
+            s->node = stmt_let{ is_mut, name, std::move(ty), std::move(init) };
             return s;
         }
 
