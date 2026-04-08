@@ -352,25 +352,7 @@ namespace crl {
         expect(token_kind::Eof, "end of file");
         return s;
     }
-
-    type_name parser::parse_type_name() {
-        const token& t = peek();
-        if (t.kind == token_kind::Identifier) {
-            token tok = t;
-            i_++;
-            return type_name{ tok };
-        }
-        if (t.kind == token_kind::KwInt ||
-            t.kind == token_kind::KwBool ||
-            t.kind == token_kind::KwFloat || 
-            t.kind == token_kind::KwString ||
-            t.kind == token_kind::KwVoid) {
-            token tok = t;
-            i_++;
-            return type_name{ tok };
-        }
-        throw parse_error(t.pos, std::string("expected type name, but got [") + t.lexeme + "]");
-    }
+    
 
     std::vector<param> parser::parse_param_list_until_rparen() {
         std::vector<param> ps;
@@ -412,7 +394,7 @@ namespace crl {
         expect(token_kind::LParen, "'('");
         std::vector<param> params = parse_param_list_until_rparen();
         
-        std::optional<type_ptr> ret = parse_type();
+        std::optional<type_ptr> ret = try_parse_ret_type();
         
         block body = parse_block();
         

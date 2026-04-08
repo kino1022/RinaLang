@@ -13,4 +13,6 @@ add_executable(
         public/compiler/parser.hpp
         private/compiler/parser.cpp
         public/compiler/ast_printer_snippet.hpp
+        public/compiler/typecheck.hpp
+        private/compiler/typecheck.cpp
 )

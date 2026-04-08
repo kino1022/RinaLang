@@ -1,3 +1,4 @@
-fn f (x: ref int) : ref int {
-  return x;
+fn f(x: ref int): ref int {
+  let y: ref ref int = x;
+  return y;
 }

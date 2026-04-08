@@ -67,10 +67,6 @@ namespace crl {
     struct stmt;
     using stmt_ptr = std::unique_ptr<stmt>;
     
-    struct type_name {
-        token name;
-    };
-    
     struct type;
     using type_ptr = std::unique_ptr<type>;
     
@@ -171,8 +167,7 @@ namespace crl {
         
         fn_item parse_fn();
         std::vector<param> parse_param_list_until_rparen();
-        std::optional<type_name> try_parse_ret_type();
-        type_name parse_type_name();
+        std::optional<type_ptr> try_parse_ret_type();
         
         arg parse_arg();
         std::vector<arg> parse_args_list_until_rparen();
