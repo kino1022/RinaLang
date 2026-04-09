@@ -5,14 +5,10 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
         RinaLang main.cpp
-        public/runtime/exceptions.hpp
-        public/runtime/entity.hpp
-        public/compiler/lexer.hpp
-        private/compiler/lexer.cpp
-        public/compiler/file_read.hpp
-        public/compiler/parser.hpp
-        private/compiler/parser.cpp
-        public/compiler/ast_printer_snippet.hpp
-        public/compiler/typecheck.hpp
-        private/compiler/typecheck.cpp
+        public/class.hpp
+        public/interface.hpp
+        public/entity.hpp
+        public/component.hpp
+        public/exceptions.hpp
+        private/class.cpp
 )
