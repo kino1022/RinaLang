@@ -153,53 +153,77 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-private/compiler/lexer.o: private/compiler/lexer.cpp.o
-.PHONY : private/compiler/lexer.o
+private/class.o: private/class.cpp.o
+.PHONY : private/class.o
 
 # target to build an object file
-private/compiler/lexer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o
-.PHONY : private/compiler/lexer.cpp.o
+private/class.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/class.cpp.o
+.PHONY : private/class.cpp.o
 
-private/compiler/lexer.i: private/compiler/lexer.cpp.i
-.PHONY : private/compiler/lexer.i
+private/class.i: private/class.cpp.i
+.PHONY : private/class.i
 
 # target to preprocess a source file
-private/compiler/lexer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.i
-.PHONY : private/compiler/lexer.cpp.i
+private/class.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/class.cpp.i
+.PHONY : private/class.cpp.i
 
-private/compiler/lexer.s: private/compiler/lexer.cpp.s
-.PHONY : private/compiler/lexer.s
+private/class.s: private/class.cpp.s
+.PHONY : private/class.s
 
 # target to generate assembly for a file
-private/compiler/lexer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.s
-.PHONY : private/compiler/lexer.cpp.s
+private/class.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/class.cpp.s
+.PHONY : private/class.cpp.s
 
-private/compiler/parser.o: private/compiler/parser.cpp.o
-.PHONY : private/compiler/parser.o
+private/entity.o: private/entity.cpp.o
+.PHONY : private/entity.o
 
 # target to build an object file
-private/compiler/parser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o
-.PHONY : private/compiler/parser.cpp.o
+private/entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/entity.cpp.o
+.PHONY : private/entity.cpp.o
 
-private/compiler/parser.i: private/compiler/parser.cpp.i
-.PHONY : private/compiler/parser.i
+private/entity.i: private/entity.cpp.i
+.PHONY : private/entity.i
 
 # target to preprocess a source file
-private/compiler/parser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.i
-.PHONY : private/compiler/parser.cpp.i
+private/entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/entity.cpp.i
+.PHONY : private/entity.cpp.i
 
-private/compiler/parser.s: private/compiler/parser.cpp.s
-.PHONY : private/compiler/parser.s
+private/entity.s: private/entity.cpp.s
+.PHONY : private/entity.s
 
 # target to generate assembly for a file
-private/compiler/parser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.s
-.PHONY : private/compiler/parser.cpp.s
+private/entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/entity.cpp.s
+.PHONY : private/entity.cpp.s
+
+private/interface.o: private/interface.cpp.o
+.PHONY : private/interface.o
+
+# target to build an object file
+private/interface.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/interface.cpp.o
+.PHONY : private/interface.cpp.o
+
+private/interface.i: private/interface.cpp.i
+.PHONY : private/interface.i
+
+# target to preprocess a source file
+private/interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/interface.cpp.i
+.PHONY : private/interface.cpp.i
+
+private/interface.s: private/interface.cpp.s
+.PHONY : private/interface.s
+
+# target to generate assembly for a file
+private/interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RinaLang.dir/build.make CMakeFiles/RinaLang.dir/private/interface.cpp.s
+.PHONY : private/interface.cpp.s
 
 # Help Target
 help:
@@ -213,12 +237,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... private/compiler/lexer.o"
-	@echo "... private/compiler/lexer.i"
-	@echo "... private/compiler/lexer.s"
-	@echo "... private/compiler/parser.o"
-	@echo "... private/compiler/parser.i"
-	@echo "... private/compiler/parser.s"
+	@echo "... private/class.o"
+	@echo "... private/class.i"
+	@echo "... private/class.s"
+	@echo "... private/entity.o"
+	@echo "... private/entity.i"
+	@echo "... private/entity.s"
+	@echo "... private/interface.o"
+	@echo "... private/interface.i"
+	@echo "... private/interface.s"
 .PHONY : help
 
 

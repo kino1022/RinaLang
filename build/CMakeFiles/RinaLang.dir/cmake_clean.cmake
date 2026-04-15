@@ -1,10 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RinaLang.dir/main.cpp.o"
   "CMakeFiles/RinaLang.dir/main.cpp.o.d"
-  "CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o"
-  "CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o.d"
-  "CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o"
-  "CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o.d"
+  "CMakeFiles/RinaLang.dir/private/class.cpp.o"
+  "CMakeFiles/RinaLang.dir/private/class.cpp.o.d"
+  "CMakeFiles/RinaLang.dir/private/entity.cpp.o"
+  "CMakeFiles/RinaLang.dir/private/entity.cpp.o.d"
+  "CMakeFiles/RinaLang.dir/private/interface.cpp.o"
+  "CMakeFiles/RinaLang.dir/private/interface.cpp.o.d"
   "RinaLang"
   "RinaLang.pdb"
 )

@@ -1,8 +1,14 @@
 #pragma once
 #include <memory>
+
+#include "interface.hpp"
+
 namespace rinalang {
+    
+    class implementable;
+    
     /// @brief Rinalangのclass型の既定クラス
-    class class_base {
+    class class_base : public implementable {
     public:
     
         class_base () = default;
@@ -17,8 +23,5 @@ namespace rinalang {
         bool implements() {
             return static_cast<Args>(this);
         }
-        
-    protected:
-        
     };
 }

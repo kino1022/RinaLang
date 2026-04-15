@@ -1,1 +1,1 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/RinaLang.dir/main.cpp.o CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o -o RinaLang
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/RinaLang.dir/main.cpp.o CMakeFiles/RinaLang.dir/private/class.cpp.o CMakeFiles/RinaLang.dir/private/entity.cpp.o CMakeFiles/RinaLang.dir/private/interface.cpp.o -o RinaLang

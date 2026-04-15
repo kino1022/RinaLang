@@ -9,8 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/fujitayuuta/Documents/RinaLang/main.cpp" "CMakeFiles/RinaLang.dir/main.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/main.cpp.o.d"
-  "/Users/fujitayuuta/Documents/RinaLang/private/compiler/lexer.cpp" "CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o.d"
-  "/Users/fujitayuuta/Documents/RinaLang/private/compiler/parser.cpp" "CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o.d"
+  "/Users/fujitayuuta/Documents/RinaLang/private/class.cpp" "CMakeFiles/RinaLang.dir/private/class.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/private/class.cpp.o.d"
+  "/Users/fujitayuuta/Documents/RinaLang/private/entity.cpp" "CMakeFiles/RinaLang.dir/private/entity.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/private/entity.cpp.o.d"
+  "/Users/fujitayuuta/Documents/RinaLang/private/interface.cpp" "CMakeFiles/RinaLang.dir/private/interface.cpp.o" "gcc" "CMakeFiles/RinaLang.dir/private/interface.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

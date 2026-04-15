@@ -86,49 +86,65 @@ CMakeFiles/RinaLang.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/main.cpp -o CMakeFiles/RinaLang.dir/main.cpp.s
 
-CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o: CMakeFiles/RinaLang.dir/flags.make
-CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o: /Users/fujitayuuta/Documents/RinaLang/private/compiler/lexer.cpp
-CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o: CMakeFiles/RinaLang.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o -MF CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o.d -o CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o -c /Users/fujitayuuta/Documents/RinaLang/private/compiler/lexer.cpp
+CMakeFiles/RinaLang.dir/private/class.cpp.o: CMakeFiles/RinaLang.dir/flags.make
+CMakeFiles/RinaLang.dir/private/class.cpp.o: /Users/fujitayuuta/Documents/RinaLang/private/class.cpp
+CMakeFiles/RinaLang.dir/private/class.cpp.o: CMakeFiles/RinaLang.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RinaLang.dir/private/class.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RinaLang.dir/private/class.cpp.o -MF CMakeFiles/RinaLang.dir/private/class.cpp.o.d -o CMakeFiles/RinaLang.dir/private/class.cpp.o -c /Users/fujitayuuta/Documents/RinaLang/private/class.cpp
 
-CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fujitayuuta/Documents/RinaLang/private/compiler/lexer.cpp > CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.i
+CMakeFiles/RinaLang.dir/private/class.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RinaLang.dir/private/class.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fujitayuuta/Documents/RinaLang/private/class.cpp > CMakeFiles/RinaLang.dir/private/class.cpp.i
 
-CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/private/compiler/lexer.cpp -o CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.s
+CMakeFiles/RinaLang.dir/private/class.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/private/class.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/private/class.cpp -o CMakeFiles/RinaLang.dir/private/class.cpp.s
 
-CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o: CMakeFiles/RinaLang.dir/flags.make
-CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o: /Users/fujitayuuta/Documents/RinaLang/private/compiler/parser.cpp
-CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o: CMakeFiles/RinaLang.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o -MF CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o.d -o CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o -c /Users/fujitayuuta/Documents/RinaLang/private/compiler/parser.cpp
+CMakeFiles/RinaLang.dir/private/entity.cpp.o: CMakeFiles/RinaLang.dir/flags.make
+CMakeFiles/RinaLang.dir/private/entity.cpp.o: /Users/fujitayuuta/Documents/RinaLang/private/entity.cpp
+CMakeFiles/RinaLang.dir/private/entity.cpp.o: CMakeFiles/RinaLang.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RinaLang.dir/private/entity.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RinaLang.dir/private/entity.cpp.o -MF CMakeFiles/RinaLang.dir/private/entity.cpp.o.d -o CMakeFiles/RinaLang.dir/private/entity.cpp.o -c /Users/fujitayuuta/Documents/RinaLang/private/entity.cpp
 
-CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fujitayuuta/Documents/RinaLang/private/compiler/parser.cpp > CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.i
+CMakeFiles/RinaLang.dir/private/entity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RinaLang.dir/private/entity.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fujitayuuta/Documents/RinaLang/private/entity.cpp > CMakeFiles/RinaLang.dir/private/entity.cpp.i
 
-CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/private/compiler/parser.cpp -o CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.s
+CMakeFiles/RinaLang.dir/private/entity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/private/entity.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/private/entity.cpp -o CMakeFiles/RinaLang.dir/private/entity.cpp.s
+
+CMakeFiles/RinaLang.dir/private/interface.cpp.o: CMakeFiles/RinaLang.dir/flags.make
+CMakeFiles/RinaLang.dir/private/interface.cpp.o: /Users/fujitayuuta/Documents/RinaLang/private/interface.cpp
+CMakeFiles/RinaLang.dir/private/interface.cpp.o: CMakeFiles/RinaLang.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RinaLang.dir/private/interface.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RinaLang.dir/private/interface.cpp.o -MF CMakeFiles/RinaLang.dir/private/interface.cpp.o.d -o CMakeFiles/RinaLang.dir/private/interface.cpp.o -c /Users/fujitayuuta/Documents/RinaLang/private/interface.cpp
+
+CMakeFiles/RinaLang.dir/private/interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RinaLang.dir/private/interface.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fujitayuuta/Documents/RinaLang/private/interface.cpp > CMakeFiles/RinaLang.dir/private/interface.cpp.i
+
+CMakeFiles/RinaLang.dir/private/interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RinaLang.dir/private/interface.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fujitayuuta/Documents/RinaLang/private/interface.cpp -o CMakeFiles/RinaLang.dir/private/interface.cpp.s
 
 # Object files for target RinaLang
 RinaLang_OBJECTS = \
 "CMakeFiles/RinaLang.dir/main.cpp.o" \
-"CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o" \
-"CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o"
+"CMakeFiles/RinaLang.dir/private/class.cpp.o" \
+"CMakeFiles/RinaLang.dir/private/entity.cpp.o" \
+"CMakeFiles/RinaLang.dir/private/interface.cpp.o"
 
 # External object files for target RinaLang
 RinaLang_EXTERNAL_OBJECTS =
 
 RinaLang: CMakeFiles/RinaLang.dir/main.cpp.o
-RinaLang: CMakeFiles/RinaLang.dir/private/compiler/lexer.cpp.o
-RinaLang: CMakeFiles/RinaLang.dir/private/compiler/parser.cpp.o
+RinaLang: CMakeFiles/RinaLang.dir/private/class.cpp.o
+RinaLang: CMakeFiles/RinaLang.dir/private/entity.cpp.o
+RinaLang: CMakeFiles/RinaLang.dir/private/interface.cpp.o
 RinaLang: CMakeFiles/RinaLang.dir/build.make
 RinaLang: CMakeFiles/RinaLang.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable RinaLang"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable RinaLang"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RinaLang.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

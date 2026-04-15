@@ -11,4 +11,6 @@ add_executable(
         public/component.hpp
         public/exceptions.hpp
         private/class.cpp
+        private/entity.cpp
+        private/interface.cpp
 )

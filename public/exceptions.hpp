@@ -15,4 +15,8 @@ namespace rinalang::exceptions {
         using runtime_exception::runtime_exception;
     };
     
+    struct required_not_attached_exception : runtime_exception {
+        using runtime_exception::runtime_exception;
+    };
+    
 }
