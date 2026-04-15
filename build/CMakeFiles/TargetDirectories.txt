@@ -1,3 +1,0 @@
-/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles/RinaLang.dir
-/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles/edit_cache.dir
-/Users/fujitayuuta/Documents/RinaLang/build/CMakeFiles/rebuild_cache.dir
