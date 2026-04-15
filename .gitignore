@@ -1,0 +1,68 @@
+# =========================
+# CMake & Build Directories
+# =========================
+# ビルドディレクトリ（アウトオブソースビルド用）
+build/
+build-*/
+out/
+bin/
+lib/
+
+# CMakeが生成する一時ファイル・設定ファイル
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# =========================
+# Compiled Binaries & Objects
+# =========================
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
+# =========================
+# IDEs & Editors
+# =========================
+# Visual Studio / VS Code
+.vscode/
+*.suo
+*.user
+*.sln
+*.vcxproj
+*.vcxproj.filters
+.vs/
+
+# CLion (JetBrains)
+.idea/
+cmake-build-*/
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+
+# =========================
+# OS Specific
+# =========================
+.DS_Store
+Thumbs.db
