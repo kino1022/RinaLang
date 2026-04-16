@@ -1,19 +1,19 @@
 #pragma once
 #include <concepts>
-#include <typeindex>
 
 namespace rinalang {
     
-    class interface_base {
-        
-    };
+    class interface_base { };
     
+    /// @brief 特定のinterface_baseを継承しているかどうかを判定できるクラス
     class implementable {
     public:
+        /// @brief 継承したclassが特定のinterface_baseの派生クラスを継承しているかどうかを取得する
+        /// @return 継承している場合にtrue
         template<class T>
         requires std::derived_from<T, interface_base>
-        bool implements_interface () const {
-            return static_cast<T>(this) != nullptr;
+        bool implement_interface () const {
+            return static_cast<T*>(this) != nullptr;
         }
     };
     
