@@ -2,8 +2,10 @@
 #include <concepts>
 
 namespace rinalang {
+
+    class implementable;
     
-    class interface_base { };
+    class interface_base : public implementable { };
     
     /// @brief 特定のinterface_baseを継承しているかどうかを判定できるクラス
     class implementable {

@@ -6,8 +6,7 @@
 #include "class.hpp"
 #include "component.hpp"
 
-namespace rinalang
-{
+namespace rinalang {
 
     struct i_component_holder
     {
@@ -21,8 +20,7 @@ namespace rinalang
 
     template <class T>
         requires std::derived_from<T, component_base>
-    struct component_holder final : i_component_holder
-    {
+    struct component_holder final : i_component_holder {
         template <class... Args>
         explicit component_holder(Args &&...args) : value(std::forward<Args>(args)...) {}
 
@@ -75,8 +73,7 @@ namespace rinalang
 
         template <class T>
             requires std::derived_from<T, component_base>
-        bool remove()
-        {
+        bool remove() {
             const std::type_index key(typeid(T));
             if (components.contains(key))
             {
