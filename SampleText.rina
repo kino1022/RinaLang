@@ -1,0 +1,28 @@
+参照型変数宣言: ref T a;
+
+値型変数宣言: let T a;
+
+アクセス修飾子: pub, pri, pro,
+
+関数宣言: 
+pub fn T method_name (T1 param1, T2 param2...) {
+  ret value;
+}
+
+名前空間の定義: namespace namespacename.namespacename;
+
+entityに対するcomponentのアタッチ: entity_instance attach component_instance;
+
+entityに対するcomponentのデタッチ: entity_instance dettach component_type;
+
+継承: extends type_name, type_name2......
+
+実装: implements interface_type_name, interface_type_name2.....
+
+entityのインスタンス: T entity_instance = new T(param1, param2....)[component_instance1, component_instance2....];
+
+componentかentityの中でのcomponent要求: require component_type;
+
+worldへのentity生成: world_instance spawn entity_instance;
+
+entityのworld離脱: despawn entity_instance;
